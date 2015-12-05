@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sisApp" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>Sisyphus Control</title>
+
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/bootstrap/bootstrap.min.js"></script>
+    <!--<script src="vendor/jquery-mobile/dist/jquery.mobile.min.js"></script>-->
+    <script src="vendor/socket.io-client/socket.io.js"></script>
+
+    <!--Angular Material / Progress bar-->
+    <script src="vendor/angular-animate/angular-animate.min.js"></script>
+    <script src="vendor/angular-aria/angular-aria.min.js"></script>
+    <script src="vendor/angular-material/angular-material.min.js"></script><!---->
+    <!--Sliders-->
+    <script src="vendor/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="vendor/angularjs-slider/rzslider.min.js"></script>
+    <!-- Flipster -->
+    <link rel="stylesheet" href="vendor/jquery-flipster/dist/jquery.flipster.css">
+    <link rel="stylesheet" href="views/playlist.css">
+    <script src="vendor/jquery-flipster/dist/jquery.flipster.min.js"></script>
+
+    <!--App-->
+    <script src="assets/scripts/app.js"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/jquery-mobile/dist/jquery.mobile.min.css">
+    <link rel="stylesheet" href="vendor/coverflow/dist/coverflow.css">
+    <link rel="stylesheet" href="vendor/angularjs-slider/rzslider.min.css">
+    <link rel="stylesheet" href ="vendor/angular-material/angular-material.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/font-awesome/fonts/fontawesome-webfont.ttf">
+    <link rel="stylesheet" href="/vendor/font-awesome/fonts/fontawesome-webfont.woff">
+    <link rel="stylesheet" href="/vendor/font-awesome/fonts/fontawesome-webfont.woff2">
+
+    <!-- App -->
+    <link rel="stylesheet" href="views/styles.css">
+    </head>
+
+
+    <body ng-controller="MainController as main">
+<!--    md-theme="blueTheme"-->
+
+
+
+
+
+
+    <div class="awakePlaylistContainer">
+            <!-- Awake -->
+<!--
+        <div class="awake">
+            <rzslider
+                class="awakeSlider"
+                rz-slider-model="main.awakeSlider.value"
+                rz-slider-floor="main.awakeSlider.floor"
+                rz-slider-ceil= "main.awakeSlider.ceil">
+            </rzslider>
+            <span class="UItext offOn"> Off/On</span>
+        </div>
+-->
+        <!-- trial new switch
+        <div class="switchContainer">
+            <div class="onoffswitch">
+                <input type="checkbox" name="onoffswitch"
+                       class="onoffswitch-checkbox" id="myonoffswitch"
+                       ng-model="main.onoffswitch">
+                       <label class="onoffswitch-label" for="myonoffswitch">
+                           <span class="onoffswitch-inner"></span>
+                           <span class="onoffswitch-switch"></span>
+                       </label>
+            </div>
+        </div>
+        -->
+
+        <!--angular material switch-->
+        <div class="switchContainer">
+            <div class="onoffswitch">
+                <md-switch ng-model="main.onoffswitch" aria-label="Switch 1" class="md-block" ng-change="main.sendState()">
+                    On {{ main.cb1 }}
+                </md-switch>
+            </div>
+        </div>
+
+
+
+        <!-- Playlist -->
+        <div class="playlistDispContainer">
+        <p class="playlistP" ng-click="main.goToPlaylistPage()">{{main.curPlaylist}}</p>
+        <!--    <a class="playlistP" href="/playlist">{{main.curPlaylist}}</a>-->
+                </div>
+            </div>
+
+
+        <!-- Now Playing -->
+        <div class="coverflowContainer">
+            <div class="coverflowObject">
+                <img class="nowPlayingImage" ng-src="../assets/images/{{main.nowPlaying}}.png"  onerror="this.src = '../assets/images/noPic.png'";>>
+                <p class="nowPlayingCaption">{{main.nowPlaying}}</p>
+            </div>
+        </div>
+<!--<img src="../assets/images/apache11.png"if (this.src!='error.jpg') -->
+
+
+    <div class="repeatManualContainer">
+        <!-- repeat playlist-->
+        <div class="repeatContainer">
+            <div class="repeatDiv">
+                <input ng-change="main.sendState()" class="repeatBox" type="checkbox" ng-model="main.repeatVal">
+                <span class="repeatText UItext">Repeat Playlist</span>
+            </div>
+        </div>
+
+        <!-- manual Control-->
+        <div class="manualContainer">
+            <button class="manualButton borderRad" ng-click="main.manualMovement()">Manual Movement</button>
+        </div>
+
+    </div>
+
+    <!-- Path x out of y playlist -->
+    <div class="xOfYContainer">
+        <p class="xOfYPara">{{main.pathXOfY}}</p>
+    </div>
+
+
+<!-- Progress within the playlist -->
+<div class="progressContainer">
+    <div class="progBar">
+        <div class="innerProgBar">
+            <div class="progBarUnit " ng-class="main.getProgClass($index)" ng-repeat="path in main.paths track by $index">{{main.path}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!-- PlayPauseM is only shown on mobile-->
+    <div class="playPauseContainerM">
+        <div class="playPauseButtonM" ng-click="main.playPauseClick();main.sendState();">
+            <i class="fa fa-play fa-4x" ng-show="main.showPlay"></i>
+            <i class="fa fa-pause fa-4x" ng-hide="main.showPlay"></i>
+        </div>
+    </div>
+
+    <div class="twoSliderContainer">
+
+        <!-- Speed -->
+        <div class="speedContainer">
+            <p class="sliderHeading speedHeading UItext">Speed</p>
+            <rzslider
+                class="speedSlider"
+                rz-slider-model="main.speedSlider.value"
+                rz-slider-floor="main.speedSlider.floor"
+                rz-slider-ceil= "main.speedSlider.ceil"
+                rz-slider-on-end="main.sendState()">
+            </rzslider>
+        </div>
+
+
+        <!-- PlayPauseD is only shown on desktop-->
+        <div class="playPauseContainerD">
+            <div class="playPauseButtonD" ng-click="main.playPauseClick();main.sendState();">
+                <i class="fa fa-play fa-4x" ng-show="main.showPlay"></i>
+                <i class="fa fa-pause fa-4x" ng-hide="main.showPlay"></i>
+            </div>
+        </div>
+
+        <!-- Lights-->
+        <div class="lightsContainer">
+            <p class="sliderHeading lightsHeading UItext">Brightness</p>
+            <rzslider
+                class="lightsSlider"
+                rz-slider-model="main.lightsSlider.value"
+                rz-slider-floor="main.lightsSlider.floor"
+                rz-slider-ceil="main.lightsSlider.ceil"
+                rz-slider-on-change="main.sendState()">
+            </rzslider>
+        </div>
+    </div>
+
+    <div class="curSisbotLogOutContainer">
+        <div class="curSisbotContainer">
+            <!--<span >Current Sisyphys: </span><span class="UIOutputBox curSisBox">{{main.curSisbot}}</span>-->
+            <span class="UItext curSisText">Select a Sisyphus: </span>
+            <span class="curSisbot-dropdown"></span>
+               <select class="curSisbot-dropdown-select" ng-model="main.curSisbot">
+                   <option selected disabled>Change Sisyphus</option>
+                   <option ng-repeat="sisSerial in main.sisSerials">{{sisSerial}}</option>
+               </select>
+               <noscript><input type="submit" value="Submit"></noscript>
+            <!--</span>-->
+
+        </div>
+            <div class="logOutContainer">
+        <button class="logoutButton borderRad" ng-click="main.logout()">Log Out</button>
+            </div>
+    </div>
+
+    <div class="development">
+
+        <!--<button ng-click="main.simulatePathComplete()">Simulate PathComplete</button>-->
+        <!--<button ng-click="main.simulateStateChange()">Simulate StateChange</button>-->
+        <!--<button ng-click="main.goHome()">Go Home</button>-->
+        <!--<button ng-mousedown="main.jog('theta','pos')" ng-mouseup="main.stop()" ng-mouseleave="main.stop()">Jog+</button>-->
+        <!--<button ng-mousedown="main.jog('neg')" ng-mouseup="main.stop()" ng-mouseleave="main.stop()">Jog-</button>-->
+        <!--<button ng-click="main.changeState()">change state</button>-->
+
+    </div>
+</body>
+</html>

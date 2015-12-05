@@ -1,0 +1,807 @@
+/*
+   Screens:
+   iPhone 5:       320px x 568px
+   iPads:          768px x 1024px
+   white MacBook: 1280px x 800px
+   HD display     1920px x 1080px
+
+   Switching between mobile & desktop at 600px width
+*/
+body, html {
+    height:100%;
+}
+body {
+    background-color: white;
+}
+
+i {
+    outline: none;
+}
+
+.manualButton, .logoutButton {
+    box-shadow:inset 0 1px 0 0 #90949E;
+    background-color:#5C6580;
+    border-radius:2px;
+    border:1px solid #2E3E6F;
+    margin: 10px auto;
+    display:inline-block;
+    width: 15em;
+    height: 2.2em;
+    cursor:pointer;
+    color:#ffffff;
+    /*font-family:Trebuchet MS;*/
+    font-size:14px;
+    /*font-weight:bold;*/
+    /*padding:24px 76px;*/
+    text-decoration:none;
+    text-shadow:0 1px 0 #9793A1;
+    outline:none;
+
+}
+.manualButton:hover, .logoutButton:hover {
+    background-color:#2E3E6F;
+}
+.manualButton:active, .logoutButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+/* angular materials switch */
+.onoffswitch{
+    width: 90px;
+    height: 30px;
+    border-radius: 17px;
+    border: 2px solid darkgray;
+}
+.md-block {
+    padding-top: 3px;
+    padding-bottom: 0;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+md-switch.md-checked .md-thumb {
+    background-color: rgb(50, 183, 9) !important;
+}
+md-switch.md-checked .md-ink-ripple {
+    color: rgb(255,64,129)!important;
+}
+md-switch.md-checked .md-bar {
+    background-color: rgba(125,125,125,0.5)!important;
+}
+
+.progressContainer {
+    width: 100%;
+    height: 5%;
+}
+.progBar {
+    width: 90%;
+    margin-left: 5%;
+    display: table;
+}
+.innerProgBar {
+    display: table-row;
+}
+.progBarUnit {
+    height: 10px;
+    border: 1px solid black;
+    background-color: greenyellow;
+    display: table-cell;
+}
+.completedBar {
+    background-color: #232323;
+}
+.currentBar {
+    background-color: #666666;
+}
+.tbdBar {
+    background-color: #e0e0e0;
+}
+
+
+.playPauseContainerD {
+    width: 20%;
+    height: 20%;
+    float: left;
+    outline:none;
+}
+.playPauseButtonD {
+    height: 70px;
+    width: 65px;
+    border-radius: 4px;
+    margin: 0 auto 0 auto;
+    outline:none;
+}
+.playlist-dropdown {
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 30%;
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+}
+
+.playlist-dropdown select {
+    width: 80%;
+    height: 2.2em;
+    font-size: inherit;
+    padding: .5em;
+    padding-right: 2.5em;
+    border: 0;
+    margin: 0;
+    border-radius: 3px;
+    text-indent: 10px;
+    text-overflow: '';
+}
+
+.logoutButton {
+    height: 50%;
+}
+
+/*******************/
+/* Mobile Portrait */
+/*******************/
+
+@media (max-width:599px) and (orientation:portrait){
+
+    body {
+        font-size: 12px;
+    }
+
+    .awakePlaylistContainer {
+        margin-top: 1%;
+        width: 100%;
+        height: 29px;
+    }
+    .switchContainer {
+        float: left;
+        width: 28%;
+        margin-left: 1px;
+    }
+    .onoffswitch {
+    }
+    .playlistDispContainer {
+        float: right;
+        width: 70%;
+        margin-right: 0;
+        height: 90%;
+        text-align: center;
+    }
+    .playlistP {
+        height:116%;
+        border: 2px solid darkgray;
+        border-radius:17px;
+        padding-top: 8px;
+        padding-bottom: 2px;
+        margin-top: 0;
+        font-weight: bold;
+    }
+
+    .coverflowContainer {
+        width: 100%;
+        height: 40%;
+        margin-top:2%;
+        background-color: #131313;
+    }
+    .coverflowObject {
+        height: 100%;
+        width:60%;
+        margin: 0 auto 0 auto;
+        padding-top: 2%;
+        text-align: center;
+    }
+    .nowPlayingImage {
+        height: 80%;
+    }
+    .nowPlayingCaption {
+        color: white;
+        text-align: center;
+    }
+
+    .repeatManualContainer {
+        width: 100%;
+        height: 5%;
+    }
+    .repeatContainer {
+        width: 45%;
+        height: 100%;
+        padding-top: 2%;
+        margin: 0;
+        float: left;
+        margin-left: 5%
+    }
+    .repeatBox {
+        margin-left: 10%;
+        padding-top: 1px;
+    }
+    .manualContainer {
+        width: 45%;
+        height: 100%;
+        float: left;
+    }
+    .manualButton {
+        width: 145px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        margin-top: 3%;
+        height: 130%;
+    }
+
+/*
+    .manualButton, .logoutButton {
+        box-shadow:inset 0 1px 0 0 #90949E;
+        background-color:#5C6580;
+        border-radius:2px;
+        border:1px solid #2E3E6F;
+        margin: 10px auto;
+        display:inline-block;
+        width: 15em;
+        height: 2.2em;
+        cursor:pointer;
+        color:#ffffff;
+        font-size:14px;
+        text-decoration:none;
+        text-shadow:0 1px 0 #9793A1;
+        outline:none;
+
+    }
+*/
+
+
+    .xOfYContainer {
+        width: 100%;
+        height: 3%;
+        margin-top: 0;
+        margin-bottom:0;
+    }
+
+    .xOfYPara {
+        width: 120px;
+        text-align: left;
+        padding-top: 0;
+        margin-left: 5%;
+        margin-bottom: 0;
+    }
+
+    .progressContainer {
+        width:100%;
+        height: 3%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .progressBar {
+        width: 90%;
+        margin: 0 auto 0 auto;
+    }
+
+
+    .playPauseContainerM {
+        width: 20%;
+        height: 8%;
+        margin: 0 auto 0 auto;
+        outline:none;
+    }
+
+    .playPauseButtonM {
+        height: 50px;
+        width: 50px;
+        margin: 1% auto 1% auto;
+        outline:none;
+}
+
+    .twoSliderContainer {
+        width: 100%;
+        height: 20%;
+        margin-bottom: 0;
+    }
+    /* Don't display the desktop play/pause button
+    on the /tablet/desk view */
+    .playPauseContainerD {
+        display: none;
+    }
+    .speedHeading {
+        margin-left: 5%;
+        margin-bottom: 0px;
+    }
+    .lightsHeading {
+        margin-left: 5%;
+        margin-bottom: 0px;
+    }
+    .speedContainer {
+        width: 100%;
+        height:50%;
+        margin: 0;
+    }
+    .lightsContainer {
+        width: 100%;
+        height: 50%;
+        margin: 0;
+    }
+
+    .speedSlider {
+        margin-left: 5%;
+        width: 90%;
+    }
+    .lightsSlider {
+        margin-left: 5%;
+        width: 90%;
+    }
+    .speedSlider:hover, .lightsSlider:hover {
+        cursor: pointer;
+    }
+
+
+    .curSisbotLogOutContainer {
+        width: 100%;
+        height: 7%;
+        margin-top: 6%;
+    }
+    .curSisbotContainer {
+        width: 45%;
+        height: 100%;
+        float: left;
+        margin-left: 5%;
+    }
+    .logOutContainer {
+        width: 45%;
+        height: 100%;
+        float: right;
+    }
+    .logoutButton {
+        width: 70%;
+        margin-right: 40%;
+        margin-top: 16px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        margin-left: 20%;
+        height: 100%;
+    }
+} /* end mobile Portrait*/
+
+
+
+
+
+/********************/
+/* Mobile Landscape */
+/********************/
+
+
+@media (max-width:599px) and (orientation:landscape) {
+
+    body {
+    }
+
+
+    .awakePlaylistContainer {
+        margin-top: 1px;
+        width: 100%;
+        height: 24px;
+    }
+    .switchContainer {
+        float: left;
+        width: 44%;
+        margin-left: 5%;
+    }
+    .playlistDispContainer {
+        float: left;
+        width: 45%;
+        margin-right: 5%;
+        height: 32px;
+        text-align: center;
+    }
+    .playlistP {
+        border: 2px solid darkgray;
+        border-radius:17px;
+        padding: 5px;
+        margin-top: 0;
+        font-weight: bold;
+    }
+    .playlistDispContainer:hover{
+        cursor: pointer;
+    }
+
+
+    .coverflowContainer {
+        width: 100%;
+        height: 40%;
+        margin-top: 2%;
+        background-color: #131313;
+    }
+    .coverflowObject {
+        height: 80%;
+        width: 20%;
+        margin: 0 auto 0 auto;
+        padding-top: 0;
+        padding-bottom: 1%;
+    }
+    .nowPlayingImage {
+        height:100%;
+        margin-top: 2%;
+        text-align: center;
+    }
+    .nowPlayingCaption {
+        margin-top: 0;
+        color: white;
+        text-align: center;
+    }
+
+    .repeatManualContainer {
+        width: 100%;
+        height: 6%;
+    }
+    .repeatContainer {
+        width: 50%;
+        height: 100%;
+        padding-top: 1px;
+        margin: 0;
+        float: left;
+    }
+    .repeatBox {
+        margin-left: 10%;
+        padding-top: 5px;
+    }
+    .manualContainer {
+        width: 49%;
+        height: 100%;
+        float: right;
+    }
+    .manualButton {
+        width: 200px;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-left: 18%;
+        margin-top: 1%;
+        left: 50%;
+    }
+
+
+    .xOfYContainer {
+        width: 100%;
+        height: 5%;
+        margin: 0;
+    }
+
+    .xOfYPara {
+        width: 120px;
+        height: 100%;
+        text-align: left;
+        padding-top: 0;
+        margin-left: 5%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+
+    .progressContainer {
+        width:100%;
+        height: 5%;
+        margin-top: 1%;
+        margin-bottom: 0;
+    }
+    .progressBar {
+        width: 90%;
+        margin:  auto 0 auto;
+    }
+
+
+
+    .playPauseContainerM {
+        display: none;
+    }
+    .twoSliderContainer {
+        width: 100%;
+        height: 10%;
+        margin-bottom: 0;
+        outline:none;
+    }
+    .playPauseContainerD {
+        width: 20%;
+        height: 20%;
+        outline:none;
+    }
+    .speedHeading {
+        margin-left: 12%;
+        margin-bottom: 5px;
+    }
+    .lightsHeading {
+        margin-right: 12%;
+        margin-bottom: 5px;
+    }
+    .speedContainer {
+        width: 40%;
+        height:13%;
+        float: left;
+    }
+    .lightsContainer {
+        width: 40%;
+        height:13%;
+        float: right;
+    }
+    .speedSlider {
+        margin-left: 13%;
+        width: 80%;
+    }
+    .lightsSlider {
+        margin-right: 0%;
+        width: 87%;
+    }
+
+    .curSisbotLogOutContainer {
+        width: 100%;
+        height: 5%;
+        margin-top: 15%;
+    }
+    .curSisbotContainer {
+        width: 45%;
+        height: 100%;
+        float: left;
+        margin-left: 5%;
+    }
+    .logOutContainer {
+        width: 45%;
+        height: 100%;
+        float: right;
+    }
+    .logoutButton {
+        width: 50%;
+        margin-left: 40%;
+    }
+} /* end mobile landscape */
+
+
+
+
+
+
+
+
+
+
+/*********************/
+/* Tablet or desktop */
+/*********************/
+
+@media (min-width:600px) {
+
+    body {
+    }
+
+    .borderRad {
+        border-radius: 4px;
+    }
+    .awakePlaylistContainer {
+        margin-top: 10px;
+        width: 100%;
+        height: 35px;
+    }
+    .switchContainer {
+        float: left;
+        width: 44%;
+        margin-left: 5%;
+    }
+    .playlistDispContainer {
+        float: left;
+        width: 45%;
+        margin-right: 5%;
+        height: 32px;
+        text-align: center;
+    }
+    .playlistP {
+        border: 2px solid darkgray;
+        border-radius:17px;
+        padding: 5px;
+        margin-top: 0;
+        font-weight: bold;
+    }
+    .playlistDispContainer:hover{
+        cursor: pointer;
+    }
+
+
+    .coverflowContainer {
+        width: 100%;
+        height: 45%;
+        margin-top: 2%;
+        background-color: #131313;
+    }
+    .coverflowObject {
+        height: 88%;
+        text-align: center;
+        padding-top: 1%
+    }
+    .nowPlayingImage {
+        height:100%;
+        text-align: center;
+    }
+    .nowPlayingCaption {
+        margin-top: 0;
+        color: white;
+        text-align: center;
+    }
+
+    .repeatManualContainer {
+        width: 100%;
+        height: 10%;
+    }
+    .repeatContainer {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+    .repeatDiv {
+        margin-top: 7%;
+        margin-left: 10%;
+    }
+    .repeatBox {
+        margin-left: 10%;
+    }
+    .manualContainer {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+    .manualButton {
+        width: 200px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        float:right;
+        margin-right: 10%;
+        margin-top: 7%;
+    }
+
+
+    .xOfYContainer {
+        width: 100%;
+        height: 5%;
+        margin-top: 0;
+        margin-bottom:0;
+    }
+
+    .xOfYPara {
+        width: 120px;
+        text-align: left;
+        padding-top: 2%;
+        margin-left: 5%;
+        margin-bottom: 1%;
+    }
+
+    .progressContainer {
+        width:100%;
+        height: 5%;
+        margin-top: 1%;
+        margin-bottom: 0;
+    }
+
+    .progressBar {
+        width: 90%;
+        margin: 0% auto 0% auto;
+    }
+
+    .playPauseContainerM {
+        display: none;
+    }
+
+    .twoSliderContainer {
+        width: 100%;
+        height: 10%;
+        margin-bottom: 0;
+    }
+    .playPauseContainerD {
+        width: 20%;
+        height: 20%;
+        outline:none;
+    }
+    .playPauseButtonD:hover{
+        cursor: pointer;
+    }
+    .speedHeading {
+        margin-left: 12%;
+        margin-bottom: 5px;
+    }
+    .lightsHeading {
+        margin-right: 12%;
+        margin-bottom: 5px;
+    }
+    .speedContainer, .lightsContainer {
+        width: 40%;
+        height:13%;
+        float: left;
+    }
+    .speedSlider {
+        margin-left: 13%;
+        width: 87%;
+    }
+    .lightsSlider {
+        margin-right: 10%;
+        width: 87%;
+    }
+    .speedSlider:hover, .lightsSlider:hover {
+        cursor: pointer;
+    }
+    .curSisbotLogOutContainer {
+        width: 100%;
+        height: 5%;
+        margin-top: 3%;
+    }
+    .curSisbotContainer {
+        width: 45%;
+        height: 100%;
+        float: left;
+        margin-left: 5%;
+    }
+    .logOutContainer {
+        width: 48%;
+        height: 100%;
+        float: right;
+    }
+    .logoutButton {
+        margin-top: 0;
+        width: 29%;
+        height:100%;
+        margin-left: 60%;
+    }
+} /* end tablet or desktop */
+
+
+.awakePlaylistContainer, .xOutOfYContainer, .progressContainer, .playPauseContainer, .repeatContainer, .speedContainer, .lightsContainer{
+    border: none;
+}
+
+
+.development {
+    margin-top:0;
+    text-align: center;
+}
+
+.manualWrapper {
+    position: relative;
+    top:20%;
+    width:192px;
+    margin:auto;
+
+}
+
+.manual.row {
+    margin:0;
+}
+
+.manual .left, .manual .right {
+    padding:0;
+    width:48px;
+}
+
+.manual .mid {
+    width:96px;
+    padding: 0 12px;
+}
+
+.manual .left div{
+    float:right;
+}
+
+.manual .mid div {
+    text-align:center;
+    margin:auto;
+    /*width:60px;*/
+    /*padding:0 15px;*/
+}
+
+.manual .right div {
+    float:left;
+}
+
+.manual .left div, .manual .right div {
+    margin-top:60px;
+    /*width:30px;*/
+}
+
+.turn, .move {
+    width:48px;
+    /*float:left;*/
+    height:60px;
+    font-size:48px;
+    outline:none;
+
+}

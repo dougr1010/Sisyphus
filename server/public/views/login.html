@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sisApp">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">-->
+    <title>Log In to your Sisyphus</title>
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/jquery/dist/jquery.min.js"></script>
+    <script src="vendor/socket.io-client/socket.io.js"></script>
+    <script src="vendor/angularjs-slider/rzslider.min.js"></script>
+    <script src="vendor/angular-animate/angular-animate.min.js"></script>
+    <script src="vendor/angular-aria/angular-aria.min.js"></script>
+    <script src="vendor/angular-material/angular-material.min.js"></script>
+    <script src="vendor/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="assets/scripts/app.js"></script>
+    <link rel="stylesheet" href="views/login.css">
+</head>
+<body ng-controller="LoginController as log">
+    <div class="login-header">
+        <h1>Sisyphus.</h1>
+    </div>
+    <div>
+        <img class="background-img" src="/assets/images/sisyphus2-2.png"/>
+    </div>
+
+    <div class="login-body">
+        <form autocomplete="off">
+            <div ng-hide="log.registering">
+                <h2 class="login-text">Sign In</h2>
+                <input class="login-email" type="text" placeholder="Email" name="username" ng-model="log.acct.email"><br/>
+                <input class="login-password" type="password" placeholder="Password" name="username" ng-model="log.acct.password"><br/>
+                <button class="login-button" type="submit" ng-click="log.login()">Login</button>
+                <div class="register" ng-click="log.registering = true">Register</div>
+            </div>
+            <div ng-show="log.registering">
+                <h2 class="reg-text">Register</h2>
+                <input class="login-email" type="text" placeholder="Email" name="username" ng-model="log.acct.email"><br/>
+                <input class="login-password" type="password" placeholder="Password" name="username" ng-model="log.acct.password"><br/>
+                <input class="reg-password-confirm" type="password" placeholder="Password Confirm" name="confirm" ng-model="log.acct.confirm"><br/>
+                <input class="reg-sis-serial" type="text" placeholder="Sisyphus Serial No." name="serial" ng-model="log.acct.serial"><br/>
+                <input class="reg-sis-id" type="text" placeholder="Sisyphus ID" name="sisId" ng-model="log.acct.sid"><br/>
+                <p class="nomatch-text" ng-show="log.nomatch">Error. Password and password confirm do not match.</p>
+                <button class="reg-button" ng-click="log.register()">Register</button>
+                <div class="reg-already" ng-click="log.registering = false">Already have an account?</div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
