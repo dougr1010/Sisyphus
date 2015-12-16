@@ -1,7 +1,7 @@
 # Sisyphus User Interface
 
 ##What is a Sisyphus?
-Sisyphus is a (sometimes small, sometimes large) circular kinetic sculpture. There is a shallow bed of sand with a metal ball atop.
+Sisyphus is a kinetic sculpture by artist Bruce Shapiro. There is a shallow bed of sand with a metal ball atop.
 A motor below the bed of sand will move the metal ball via a magnet. As the ball moves, it leaves behind dunes in the sand. As it progresses through it's path, only certain dunes survive, thus leaving behind the art.
 
 ##Why the interface?
@@ -17,5 +17,3 @@ If there are multiple people/browsers controlling a single Sisbot, when any one 
 
 ##For more info
 For info on The Art of Motion Control and the Sisyphus itself, [see http://www.taomc.com/](http://www.taomc.com/).
-
-For info on this interface, email me at nickrenfo@gmail.com
